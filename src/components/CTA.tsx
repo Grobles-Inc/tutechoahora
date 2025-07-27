@@ -1,4 +1,5 @@
 import BotonContacto from "./BotonContacto"
+import { Link } from "@tanstack/react-router"
 
 export default function CTA() {
   return (
@@ -23,7 +24,9 @@ export default function CTA() {
             Encuentra tu hogar ideal, contacta a nuestro equipo de profesionales, para poder conocer el hogar de tus sueños.
           </p>
 
-          <BotonContacto />
+          <Link to="/contacto">
+            <BotonContacto />
+          </Link>
         </div>
       </div>
     </section>
