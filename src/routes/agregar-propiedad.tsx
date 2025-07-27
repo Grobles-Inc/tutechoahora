@@ -125,14 +125,14 @@ function AddProperty() {
           throw new Error(`Error al guardar: ${updateResponse.status}`);
         }
 
-        alert('Property added successfully!');
+        alert('Propiedad agregada correctamente!');
         navigate({
           to: '/propiedades',
           search: { success: true },
         })
       } catch (error: any) {
         console.error('Error adding property:', error);
-        alert(`Failed to add property: ${error.message || "Unknown error"}`);
+        alert(`Error al agregar propiedad: ${error.message || "Error desconocido"}`);
       }
     },
   });
