@@ -91,12 +91,6 @@ function RouteComponent() {
           <p className="lg:text-lg text-sm text-gray-700 mb-2">
             acosme@innovatechapp.com
           </p>
-          <p className="lg:text-lg text-sm text-gray-700">
-            <a
-              href="http://www.linkedin.com/in/alancosme-044727bb/"
-              className="link link-hover text-blue-600"
-            >http://www.linkedin.com/in/alancosme-044727bb/</a>
-          </p>
         </div>
         <a
           href="https://wa.me/51976655790"
