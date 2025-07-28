@@ -2,6 +2,7 @@ import { Outlet, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 import Header from '../components/Header'
 import Footer from '@/components/Footer'
+import WhatsAppButton from '@/components/WhatsAppButton'
 
 export const Route = createRootRoute({
   component: () => (
@@ -11,6 +12,7 @@ export const Route = createRootRoute({
         <Outlet />
       </main>
       <Footer />
+      <WhatsAppButton />
       <TanStackRouterDevtools />
     </>
   ),
