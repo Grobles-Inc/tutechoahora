@@ -1,3 +1,5 @@
+import { useRouter } from '@tanstack/react-router'
+
 interface Property {
   id?: string
   titulo: string
@@ -15,8 +17,12 @@ interface FeaturedPropertyProps {
 }
 
 export function FeaturedProperty({ property, onLearnMore }: FeaturedPropertyProps) {
+  const router = useRouter()
+  
   const handleLearnMore = () => {
-    if (onLearnMore) {
+    if (property.id) {
+      router.navigate({ to: '/propiedad/$id', params: { id: String(property.id) } })
+    } else if (onLearnMore) {
       onLearnMore(property)
     }
   }
@@ -39,7 +45,7 @@ export function FeaturedProperty({ property, onLearnMore }: FeaturedPropertyProp
             {/* Property info */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 mb-2">
-                <span className="bg-emerald-500 px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
+                <span className="bg-primary px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
                   <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd" />
                   </svg>
@@ -80,10 +86,10 @@ export function FeaturedProperty({ property, onLearnMore }: FeaturedPropertyProp
               </div>
               
               <div className="flex items-center gap-2 mt-3">
-                <svg className="w-5 h-5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1" />
                 </svg>
-                <span className="text-2xl font-bold text-emerald-400">{property.precio}</span>
+                <span className="text-2xl font-bold text-primary">{property.precio}</span>
               </div>
             </div>
             

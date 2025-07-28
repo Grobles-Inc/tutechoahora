@@ -10,16 +10,30 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
+import { Route as PropiedadTempRouteImport } from './routes/propiedad-temp'
+import { Route as PropiedadRouteImport } from './routes/propiedad'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as AgregarPropiedadRouteImport } from './routes/agregar-propiedad'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PropiedadPropiedadIdRouteImport } from './routes/propiedad.$propiedadId'
+import { Route as PropiedadIdRouteImport } from './routes/propiedad/$id'
 import { Route as DemoFormSimpleRouteImport } from './routes/demo.form.simple'
 import { Route as DemoFormAddressRouteImport } from './routes/demo.form.address'
 
 const PropiedadesRoute = PropiedadesRouteImport.update({
   id: '/propiedades',
   path: '/propiedades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropiedadTempRoute = PropiedadTempRouteImport.update({
+  id: '/propiedad-temp',
+  path: '/propiedad-temp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PropiedadRoute = PropiedadRouteImport.update({
+  id: '/propiedad',
+  path: '/propiedad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NosotrosRoute = NosotrosRouteImport.update({
@@ -42,6 +56,16 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PropiedadPropiedadIdRoute = PropiedadPropiedadIdRouteImport.update({
+  id: '/$propiedadId',
+  path: '/$propiedadId',
+  getParentRoute: () => PropiedadRoute,
+} as any)
+const PropiedadIdRoute = PropiedadIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PropiedadRoute,
+} as any)
 const DemoFormSimpleRoute = DemoFormSimpleRouteImport.update({
   id: '/demo/form/simple',
   path: '/demo/form/simple',
@@ -58,7 +82,11 @@ export interface FileRoutesByFullPath {
   '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/propiedad': typeof PropiedadRouteWithChildren
+  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/propiedad/$id': typeof PropiedadIdRoute
+  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
 }
@@ -67,7 +95,11 @@ export interface FileRoutesByTo {
   '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/propiedad': typeof PropiedadRouteWithChildren
+  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/propiedad/$id': typeof PropiedadIdRoute
+  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
 }
@@ -77,7 +109,11 @@ export interface FileRoutesById {
   '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
+  '/propiedad': typeof PropiedadRouteWithChildren
+  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/propiedad/$id': typeof PropiedadIdRoute
+  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
   '/demo/form/simple': typeof DemoFormSimpleRoute
 }
@@ -88,7 +124,11 @@ export interface FileRouteTypes {
     | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
+    | '/propiedad'
+    | '/propiedad-temp'
     | '/propiedades'
+    | '/propiedad/$id'
+    | '/propiedad/$propiedadId'
     | '/demo/form/address'
     | '/demo/form/simple'
   fileRoutesByTo: FileRoutesByTo
@@ -97,7 +137,11 @@ export interface FileRouteTypes {
     | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
+    | '/propiedad'
+    | '/propiedad-temp'
     | '/propiedades'
+    | '/propiedad/$id'
+    | '/propiedad/$propiedadId'
     | '/demo/form/address'
     | '/demo/form/simple'
   id:
@@ -106,7 +150,11 @@ export interface FileRouteTypes {
     | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
+    | '/propiedad'
+    | '/propiedad-temp'
     | '/propiedades'
+    | '/propiedad/$id'
+    | '/propiedad/$propiedadId'
     | '/demo/form/address'
     | '/demo/form/simple'
   fileRoutesById: FileRoutesById
@@ -116,6 +164,8 @@ export interface RootRouteChildren {
   AgregarPropiedadRoute: typeof AgregarPropiedadRoute
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
+  PropiedadRoute: typeof PropiedadRouteWithChildren
+  PropiedadTempRoute: typeof PropiedadTempRoute
   PropiedadesRoute: typeof PropiedadesRoute
   DemoFormAddressRoute: typeof DemoFormAddressRoute
   DemoFormSimpleRoute: typeof DemoFormSimpleRoute
@@ -128,6 +178,20 @@ declare module '@tanstack/react-router' {
       path: '/propiedades'
       fullPath: '/propiedades'
       preLoaderRoute: typeof PropiedadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/propiedad-temp': {
+      id: '/propiedad-temp'
+      path: '/propiedad-temp'
+      fullPath: '/propiedad-temp'
+      preLoaderRoute: typeof PropiedadTempRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/propiedad': {
+      id: '/propiedad'
+      path: '/propiedad'
+      fullPath: '/propiedad'
+      preLoaderRoute: typeof PropiedadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/nosotros': {
@@ -158,6 +222,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/propiedad/$propiedadId': {
+      id: '/propiedad/$propiedadId'
+      path: '/$propiedadId'
+      fullPath: '/propiedad/$propiedadId'
+      preLoaderRoute: typeof PropiedadPropiedadIdRouteImport
+      parentRoute: typeof PropiedadRoute
+    }
+    '/propiedad/$id': {
+      id: '/propiedad/$id'
+      path: '/$id'
+      fullPath: '/propiedad/$id'
+      preLoaderRoute: typeof PropiedadIdRouteImport
+      parentRoute: typeof PropiedadRoute
+    }
     '/demo/form/simple': {
       id: '/demo/form/simple'
       path: '/demo/form/simple'
@@ -175,11 +253,27 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface PropiedadRouteChildren {
+  PropiedadIdRoute: typeof PropiedadIdRoute
+  PropiedadPropiedadIdRoute: typeof PropiedadPropiedadIdRoute
+}
+
+const PropiedadRouteChildren: PropiedadRouteChildren = {
+  PropiedadIdRoute: PropiedadIdRoute,
+  PropiedadPropiedadIdRoute: PropiedadPropiedadIdRoute,
+}
+
+const PropiedadRouteWithChildren = PropiedadRoute._addFileChildren(
+  PropiedadRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AgregarPropiedadRoute: AgregarPropiedadRoute,
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
+  PropiedadRoute: PropiedadRouteWithChildren,
+  PropiedadTempRoute: PropiedadTempRoute,
   PropiedadesRoute: PropiedadesRoute,
   DemoFormAddressRoute: DemoFormAddressRoute,
   DemoFormSimpleRoute: DemoFormSimpleRoute,

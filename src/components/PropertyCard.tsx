@@ -1,3 +1,5 @@
+import { useRouter } from '@tanstack/react-router'
+
 interface Property {
   id?: string
   titulo: string
@@ -23,9 +25,12 @@ export function PropertyCard({
   onViewDetails 
 }: PropertyCardProps) {
   const isLarge = variant === 'large'
+  const router = useRouter()
   
   const handleViewDetails = () => {
-    if (onViewDetails) {
+    if (property.id) {
+      router.navigate({ to: '/propiedad/$id', params: { id: String(property.id) } })
+    } else if (onViewDetails) {
       onViewDetails(property)
     }
   }

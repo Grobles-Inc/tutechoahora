@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router'
+import { createFileRoute, Link, useRouter } from '@tanstack/react-router'
 const JSONBIN_MASTER_KEY = import.meta.env.VITE_JSONBIN_MASTER_KEY;
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
@@ -18,6 +18,14 @@ export const Route = createFileRoute('/propiedades')({
 
 function RouteComponent() {
   const properties = Route.useLoaderData()
+  const router = useRouter()
+
+  const handleViewDetails = (property: any) => {
+    if (property.id) {
+      router.navigate({ to: '/propiedad/$id', params: { id: property.id } })
+    }
+  }
+
   return <div className="w-11/12 lg:max-w-5xl mx-auto py-8">
     <h1>Propiedades</h1>
 
@@ -37,7 +45,12 @@ function RouteComponent() {
               <h2 className="card-title">{property.titulo}</h2>
               <p>{property.descripcion}</p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary">Ver Detalles</button>
+                <button 
+                  className="btn btn-primary"
+                  onClick={() => handleViewDetails(property)}
+                >
+                  Ver Detalles
+                </button>
               </div>
             </div>
           </div>
