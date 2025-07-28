@@ -3,6 +3,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import { PropertySection } from '../components/PropertySection'
 import { FeaturedProperty } from '../components/FeaturedProperty'
 import { useState, useMemo } from 'react'
+import SEO from '../components/SEO'
 
 const JSONBIN_MASTER_KEY = import.meta.env.VITE_JSONBIN_MASTER_KEY;
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
@@ -65,7 +66,13 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-base-100 text-base-content">
+    <>
+      <SEO 
+        title="Tu Techo Ahora - Encuentra tu hogar ideal | Inmobiliaria"
+        description="Encuentra el hogar perfecto para ti y tu familia. Propiedades en venta y alquiler con asesoría personalizada. Tu Techo Ahora, tu inmobiliaria de confianza."
+        keywords="inmobiliaria, propiedades, casas, apartamentos, venta, alquiler, hogar, real estate, encontrar casa"
+      />
+      <main className="min-h-screen bg-base-100 text-base-content">
       {/* Hero */}
       <section className="relative max-w-screen-xl mx-auto px-4 py-10 grid md:grid-cols-2 items-center gap-8">
         <div className="relative z-10">
@@ -162,7 +169,7 @@ function App() {
         maxItems={4}
         gridCols="4"
       />
- {/* Propiedad destacada */}
+      {/* Propiedad destacada */}
       {Array.isArray(propiedades) && propiedades.length > 0 && (
         <FeaturedProperty property={propiedades[0]} />
       )}
@@ -179,6 +186,7 @@ function App() {
         />
       )}
     </main>
+    </>
   );
 }
 

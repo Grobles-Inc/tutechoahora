@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
-
 import { useAppForm } from '../hooks/demo.form'
+import SEO from '@/components/SEO'
 
 export const Route = createFileRoute('/contacto')({
   component: RouteComponent,
@@ -35,75 +35,82 @@ function RouteComponent() {
   })
 
   return (
-    <div>
-      <section className="flex flex-col lg:flex-row items-center justify-center p-4 lg:p-16">
-        <div className="flex-1 max-w-lg lg:mr-8 p-6">
-          <h1 className="text-4xl font-bold mb-4 text-gray-800">REALIZA TU CONSULTA</h1>
-          <p className="mb-6 text-gray-600">
-            Póngase en contacto con nosotros y reciba una consulta gratuita para
-            encontrar soluciones a sus problemas hoy mismo.
-          </p>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              form.handleSubmit()
-            }}
-            className="space-y-4"
+    <>
+      <SEO
+        title="Tu Techo Ahora - Encuentra tu hogar ideal | Inmobiliaria"
+        description="Encuentra el hogar perfecto para ti y tu familia. Propiedades en venta y alquiler con asesoría personalizada. Tu Techo Ahora, tu inmobiliaria de confianza."
+        keywords="inmobiliaria, propiedades, casas, apartamentos, venta, alquiler, hogar, real estate, encontrar casa"
+      />
+      <div>
+        <section className="flex flex-col lg:flex-row items-center justify-center p-4 lg:p-16">
+          <div className="flex-1 max-w-lg lg:mr-8 p-6">
+            <h1 className="text-4xl font-bold mb-4 text-gray-800">REALIZA TU CONSULTA</h1>
+            <p className="mb-6 text-gray-600">
+              Póngase en contacto con nosotros y reciba una consulta gratuita para
+              encontrar soluciones a sus problemas hoy mismo.
+            </p>
+            <form
+              onSubmit={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                form.handleSubmit()
+              }}
+              className="space-y-4"
+            >
+              <form.AppField name="name">
+                {(field) => <field.TextField label="Nombre" placeholder="Tu nombre" />}
+              </form.AppField>
+
+              <form.AppField name="email">
+                {(field) => <field.TextField label="Correo Electrónico" placeholder="tu@correo.com" />}
+              </form.AppField>
+
+              <form.AppField name="phone">
+                {(field) => <field.TextField label="Celular" placeholder="Tu número de celular" />}
+              </form.AppField>
+
+              <form.AppField name="details">
+                {(field) => <field.TextArea label="Detalles" rows={4} />}
+              </form.AppField>
+
+              <div className="w-full">
+                <form.AppForm>
+                  <form.SubscribeButton label="CONTÁCTENOS" />
+                </form.AppForm>
+              </div>
+            </form>
+          </div>
+          <div className="flex-1 hidden lg:block">
+            <img
+              src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              alt="House"
+              className="shadow-lg w-full h-auto object-cover opacity-70"
+            />
+          </div>
+        </section>
+        <div className="divider"></div>
+
+        <section className="p-4 lg:p-16 flex justify-between">
+          <div className="">
+            <h2 className="text-3xl font-bold mb-4 text-primary">CONTACTO</h2>
+            <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 976 655 790</p>
+            <p className="lg:text-lg text-sm text-gray-700 mb-2">
+              acosme@innovatechapp.com
+            </p>
+          </div>
+          <a
+            href="https://wa.me/51976655790"
+            target="_blank"
+            className="btn btn-lg btn-circle btn-primary"
           >
-            <form.AppField name="name">
-              {(field) => <field.TextField label="Nombre" placeholder="Tu nombre" />}
-            </form.AppField>
-
-            <form.AppField name="email">
-              {(field) => <field.TextField label="Correo Electrónico" placeholder="tu@correo.com" />}
-            </form.AppField>
-
-            <form.AppField name="phone">
-              {(field) => <field.TextField label="Celular" placeholder="Tu número de celular" />}
-            </form.AppField>
-
-            <form.AppField name="details">
-              {(field) => <field.TextArea label="Detalles" rows={4} />}
-            </form.AppField>
-
-            <div className="w-full">
-              <form.AppForm>
-                <form.SubscribeButton label="CONTÁCTENOS" />
-              </form.AppForm>
-            </div>
-          </form>
-        </div>
-        <div className="flex-1 hidden lg:block">
-          <img
-            src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=1073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="House"
-            className="shadow-lg w-full h-auto object-cover opacity-70"
-          />
-        </div>
-      </section>
-      <div className="divider"></div>
-
-      <section className="p-4 lg:p-16 flex justify-between">
-        <div className="">
-          <h2 className="text-3xl font-bold mb-4 text-primary">CONTACTO</h2>
-          <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 976 655 790</p>
-          <p className="lg:text-lg text-sm text-gray-700 mb-2">
-            acosme@innovatechapp.com
-          </p>
-        </div>
-        <a
-          href="https://wa.me/51976655790"
-          target="_blank"
-          className="btn btn-lg btn-circle btn-primary"
-        >
-          <img
-            src="https://img.icons8.com/?size=48&id=16713&format=png"
-            alt="Whatsapp"
-            className="w-8 h-8"
-          />
-        </a>
-      </section>
-    </div>
+            <img
+              src="https://img.icons8.com/?size=48&id=16713&format=png"
+              alt="Whatsapp"
+              className="w-8 h-8"
+            />
+          </a>
+        </section>
+      </div>
+    </>
   )
 }
