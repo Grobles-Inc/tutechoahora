@@ -9,18 +9,33 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport } from './routes/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+import { Route as TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport } from './routes/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as PropiedadTempRouteImport } from './routes/propiedad-temp'
 import { Route as PropiedadRouteImport } from './routes/propiedad'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as ContactoRouteImport } from './routes/contacto'
-import { Route as AgregarPropiedadRouteImport } from './routes/agregar-propiedad'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropiedadPropiedadIdRouteImport } from './routes/propiedad.$propiedadId'
 import { Route as PropiedadIdRouteImport } from './routes/propiedad/$id'
 import { Route as DemoFormSimpleRouteImport } from './routes/demo.form.simple'
 import { Route as DemoFormAddressRouteImport } from './routes/demo.form.address'
 
+const TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute =
+  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport.update(
+    {
+      id: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
+      path: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
+      getParentRoute: () => rootRouteImport,
+    } as any,
+  )
+const TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route =
+  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport.update({
+    id: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341',
+    path: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const PropiedadesRoute = PropiedadesRouteImport.update({
   id: '/propiedades',
   path: '/propiedades',
@@ -44,11 +59,6 @@ const NosotrosRoute = NosotrosRouteImport.update({
 const ContactoRoute = ContactoRouteImport.update({
   id: '/contacto',
   path: '/contacto',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AgregarPropiedadRoute = AgregarPropiedadRouteImport.update({
-  id: '/agregar-propiedad',
-  path: '/agregar-propiedad',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -79,12 +89,13 @@ const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedad': typeof PropiedadRouteWithChildren
   '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
+  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
   '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -92,12 +103,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedad': typeof PropiedadRouteWithChildren
   '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
+  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
   '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -106,12 +118,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/agregar-propiedad': typeof AgregarPropiedadRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedad': typeof PropiedadRouteWithChildren
   '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
+  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
+  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
   '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
   '/demo/form/address': typeof DemoFormAddressRoute
@@ -121,12 +134,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
     | '/propiedad'
     | '/propiedad-temp'
     | '/propiedades'
+    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
     | '/propiedad/$propiedadId'
     | '/demo/form/address'
@@ -134,12 +148,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
     | '/propiedad'
     | '/propiedad-temp'
     | '/propiedades'
+    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
     | '/propiedad/$propiedadId'
     | '/demo/form/address'
@@ -147,12 +162,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
-    | '/agregar-propiedad'
     | '/contacto'
     | '/nosotros'
     | '/propiedad'
     | '/propiedad-temp'
     | '/propiedades'
+    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
     | '/propiedad/$propiedadId'
     | '/demo/form/address'
@@ -161,18 +177,33 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AgregarPropiedadRoute: typeof AgregarPropiedadRoute
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
   PropiedadRoute: typeof PropiedadRouteWithChildren
   PropiedadTempRoute: typeof PropiedadTempRoute
   PropiedadesRoute: typeof PropiedadesRoute
+  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route: typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
+  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute: typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   DemoFormAddressRoute: typeof DemoFormAddressRoute
   DemoFormSimpleRoute: typeof DemoFormSimpleRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': {
+      id: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+      path: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+      fullPath: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+      preLoaderRoute: typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': {
+      id: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+      path: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+      fullPath: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+      preLoaderRoute: typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/propiedades': {
       id: '/propiedades'
       path: '/propiedades'
@@ -206,13 +237,6 @@ declare module '@tanstack/react-router' {
       path: '/contacto'
       fullPath: '/contacto'
       preLoaderRoute: typeof ContactoRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/agregar-propiedad': {
-      id: '/agregar-propiedad'
-      path: '/agregar-propiedad'
-      fullPath: '/agregar-propiedad'
-      preLoaderRoute: typeof AgregarPropiedadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -269,12 +293,15 @@ const PropiedadRouteWithChildren = PropiedadRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AgregarPropiedadRoute: AgregarPropiedadRoute,
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
   PropiedadRoute: PropiedadRouteWithChildren,
   PropiedadTempRoute: PropiedadTempRoute,
   PropiedadesRoute: PropiedadesRoute,
+  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route:
+    TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route,
+  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute:
+    TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute,
   DemoFormAddressRoute: DemoFormAddressRoute,
   DemoFormSimpleRoute: DemoFormSimpleRoute,
 }

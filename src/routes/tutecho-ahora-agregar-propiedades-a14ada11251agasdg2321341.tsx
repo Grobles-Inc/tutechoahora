@@ -1,13 +1,16 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
 import { z } from 'zod'
 import { useAppForm } from '../hooks/demo.form'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 const JSONBIN_MASTER_KEY = "$2a$10$nobY12xjte.MZ8ULE6NMTuH2yyjO.r.8veMsJchqYuoKIjgx0jBcm"
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
 
-export const Route = createFileRoute('/agregar-propiedad')({
-  component: AddProperty,
+export const Route = createFileRoute('/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341')({
+  validateSearch: z.object({
+    id: z.string().optional().or(z.number().optional()),
+  }),
+  component: AddEditProperty,
 })
 
 const schema = z.object({
@@ -23,11 +26,16 @@ const schema = z.object({
   coordenadas: z.string().optional(),
 })
 
-function AddProperty() {
+function AddEditProperty() {
   const navigate = useNavigate()
+  const { id: propertyId } = useSearch({ from: Route.id })
+  const isEditMode = !!propertyId
+
   const [uploadedImages, setUploadedImages] = useState<string[]>([])
   const [isUploading, setIsUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
+  const [isLoading, setIsLoading] = useState(isEditMode)
+
 
   const form = useAppForm({
     defaultValues: {
@@ -72,6 +80,7 @@ function AddProperty() {
         ...value,
         precio: typeof value.precio === 'string' ? parseFloat(value.precio) || 0 : value.precio,
         areaTerreno: typeof value.areaTerreno === 'string' ? parseFloat(value.areaTerreno) || 0 : value.areaTerreno,
+        imagenes: uploadedImages.length > 0 ? uploadedImages : value.imagenes,
       }
 
       try {
@@ -89,22 +98,32 @@ function AddProperty() {
         let existingProperties: any[] = [];
         if (getResponse.ok) {
           const data = await getResponse.json();
-          existingProperties = Array.isArray(data) ? data : data.properties || [];
+          existingProperties = Array.isArray(data) ? data : (data.record || [])
         }
 
-        // Generate new ID
-        const maxId = existingProperties.reduce(
-          (max: number, p: any) => (p.id && p.id > max ? p.id : max),
-          0,
-        );
-        const newProperty = {
-          id: maxId + 1,
-          ...processedValue,
-          imagenes: uploadedImages, // Use uploaded images
-        };
+        let updatedProperties;
 
-        // Add new property to array
-        const updatedProperties = [...existingProperties, newProperty];
+        if (isEditMode) {
+          // Update existing property
+          updatedProperties = existingProperties.map((p) =>
+            p.id === parseInt(propertyId.toString(), 10)
+              ? { ...p, ...processedValue }
+              : p
+          )
+        } else {
+          // Generate new ID for new property
+          const maxId = existingProperties.reduce(
+            (max: number, p: any) => (p.id && p.id > max ? p.id : max),
+            0,
+          );
+          const newProperty = {
+            id: maxId + 1,
+            ...processedValue,
+            imagenes: uploadedImages, // Use uploaded images
+          };
+          updatedProperties = [...existingProperties, newProperty];
+        }
+
 
         // Update the JSONBin
         const updateResponse = await fetch(
@@ -122,20 +141,64 @@ function AddProperty() {
         if (!updateResponse.ok) {
           const errorText = await updateResponse.text();
           console.error("JSONBin update failed:", updateResponse.status, errorText);
-          throw new Error(`Error al guardar: ${updateResponse.status}`);
+          throw new Error(`Error al ${isEditMode ? 'actualizar' : 'guardar'}: ${updateResponse.status}`);
         }
 
-        alert('Propiedad agregada correctamente!');
+        alert(`Propiedad ${isEditMode ? 'actualizada' : 'agregada'} correctamente!`);
         navigate({
-          to: '/propiedades',
-          search: { success: true },
+          to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
         })
       } catch (error: any) {
-        console.error('Error adding property:', error);
-        alert(`Error al agregar propiedad: ${error.message || "Error desconocido"}`);
+        console.error(`Error ${isEditMode ? 'updating' : 'adding'} property:`, error);
+        alert(`Error al ${isEditMode ? 'actualizar' : 'agregar'} propiedad: ${error.message || "Error desconocido"}`);
       }
     },
   });
+
+  useEffect(() => {
+    if (isEditMode) {
+      setIsLoading(true)
+      const fetchProperty = async () => {
+        try {
+          const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
+            headers: {
+              'X-Master-Key': JSONBIN_MASTER_KEY,
+              'X-Bin-Meta': 'false',
+            },
+          })
+          const data = await response.json()
+          const properties = Array.isArray(data) ? data : (data.record || [])
+          console.log('Properties:', properties)
+          console.log('Looking for property ID:', propertyId, 'parsed:', parseInt(propertyId.toString(), 10))
+          const propertyToEdit = properties.find((p: any) => p.id === parseInt(propertyId.toString(), 10))
+          console.log('Property to edit:', propertyToEdit)
+
+          if (propertyToEdit) {
+            // Set form values individually
+            form.setFieldValue('titulo', propertyToEdit.titulo || '')
+            form.setFieldValue('descripcion', propertyToEdit.descripcion || '')
+            form.setFieldValue('precio', propertyToEdit.precio || 0)
+            form.setFieldValue('ubicacion', propertyToEdit.ubicacion || '')
+            form.setFieldValue('tipoOperacion', propertyToEdit.tipoOperacion || '')
+            form.setFieldValue('areaTerreno', propertyToEdit.areaTerreno || 0)
+            form.setFieldValue('tipoVivienda', propertyToEdit.tipoVivienda || '')
+            form.setFieldValue('caracteristicas', propertyToEdit.caracteristicas || '')
+            form.setFieldValue('coordenadas', propertyToEdit.coordenadas || '')
+            setUploadedImages(propertyToEdit.imagenes || [])
+          } else {
+            alert('Propiedad no encontrada.')
+            navigate({ to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa' })
+          }
+        } catch (error) {
+          console.error('Error fetching property:', error)
+        } finally {
+          setIsLoading(false)
+        }
+      }
+      fetchProperty()
+    }
+  }, [isEditMode, propertyId, navigate])
+
 
   const handleImageUpload = async (files: FileList) => {
     if (!files || files.length === 0) return;
@@ -180,9 +243,17 @@ function AddProperty() {
     setUploadedImages(prev => prev.filter((_, i) => i !== index));
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <span className="loading loading-lg loading-spinner text-primary"></span>
+      </div>
+    )
+  }
+
   return (
     <div className="w-11/12 lg:max-w-5xl mx-auto py-8">
-      <h3 className="font-bold text-lg mb-4">Agregar Propiedad</h3>
+      <h3 className="font-bold text-lg mb-4">{isEditMode ? 'Editar' : 'Agregar'} Propiedad</h3>
       <form.AppForm>
         <form
           onSubmit={(e) => {
@@ -443,11 +514,11 @@ function AddProperty() {
           </div>
           <div />
           <div className="modal-action  flex items-center gap-4">
-            <form.SubscribeButton label="Guardar Propiedad" />
+            <form.SubscribeButton label={isEditMode ? 'Guardar Cambios' : 'Guardar Propiedad'} />
             <button
               type="button"
               className="btn btn-outline"
-              onClick={() => navigate({ to: '/propiedades' })}
+              onClick={() => navigate({ to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa' })}
             >
               Cancelar
             </button>

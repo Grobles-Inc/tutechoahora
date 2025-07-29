@@ -1,5 +1,5 @@
-import { createFileRoute, Link, useRouter } from '@tanstack/react-router'
-import SEO from '../components/SEO'
+import { createFileRoute, useRouter } from '@tanstack/react-router';
+import SEO from '../components/SEO';
 const JSONBIN_MASTER_KEY = import.meta.env.VITE_JSONBIN_MASTER_KEY;
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
@@ -35,9 +35,8 @@ function RouteComponent() {
         keywords="propiedades, casas, apartamentos, venta, alquiler, inmobiliaria, real estate"
       />
       <div className="w-11/12 lg:max-w-5xl mx-auto py-8">
-        <h1>Propiedades</h1>
+        <h1 className='text-2xl font-bold'>Propiedades</h1>
 
-        <Link to="/agregar-propiedad" className="btn btn-neutral">Agregar Propiedad</Link>
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
           {
             properties.map((property: any) => (
