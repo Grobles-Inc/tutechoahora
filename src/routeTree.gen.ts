@@ -12,15 +12,10 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport } from './routes/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
 import { Route as TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport } from './routes/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
-import { Route as PropiedadTempRouteImport } from './routes/propiedad-temp'
-import { Route as PropiedadRouteImport } from './routes/propiedad'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as PropiedadPropiedadIdRouteImport } from './routes/propiedad.$propiedadId'
-import { Route as PropiedadIdRouteImport } from './routes/propiedad/$id'
-import { Route as DemoFormSimpleRouteImport } from './routes/demo.form.simple'
-import { Route as DemoFormAddressRouteImport } from './routes/demo.form.address'
+import { Route as PropiedadIdRouteImport } from './routes/propiedad.$id'
 
 const TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute =
   TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport.update(
@@ -41,16 +36,6 @@ const PropiedadesRoute = PropiedadesRouteImport.update({
   path: '/propiedades',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PropiedadTempRoute = PropiedadTempRouteImport.update({
-  id: '/propiedad-temp',
-  path: '/propiedad-temp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PropiedadRoute = PropiedadRouteImport.update({
-  id: '/propiedad',
-  path: '/propiedad',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
@@ -66,24 +51,9 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PropiedadPropiedadIdRoute = PropiedadPropiedadIdRouteImport.update({
-  id: '/$propiedadId',
-  path: '/$propiedadId',
-  getParentRoute: () => PropiedadRoute,
-} as any)
 const PropiedadIdRoute = PropiedadIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => PropiedadRoute,
-} as any)
-const DemoFormSimpleRoute = DemoFormSimpleRouteImport.update({
-  id: '/demo/form/simple',
-  path: '/demo/form/simple',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DemoFormAddressRoute = DemoFormAddressRouteImport.update({
-  id: '/demo/form/address',
-  path: '/demo/form/address',
+  id: '/propiedad/$id',
+  path: '/propiedad/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -91,44 +61,29 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
-  '/propiedad': typeof PropiedadRouteWithChildren
-  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
   '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
   '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
-  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
-  '/propiedad': typeof PropiedadRouteWithChildren
-  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
   '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
   '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
-  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
-  '/propiedad': typeof PropiedadRouteWithChildren
-  '/propiedad-temp': typeof PropiedadTempRoute
   '/propiedades': typeof PropiedadesRoute
   '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
   '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
   '/propiedad/$id': typeof PropiedadIdRoute
-  '/propiedad/$propiedadId': typeof PropiedadPropiedadIdRoute
-  '/demo/form/address': typeof DemoFormAddressRoute
-  '/demo/form/simple': typeof DemoFormSimpleRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -136,56 +91,38 @@ export interface FileRouteTypes {
     | '/'
     | '/contacto'
     | '/nosotros'
-    | '/propiedad'
-    | '/propiedad-temp'
     | '/propiedades'
     | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
     | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
-    | '/propiedad/$propiedadId'
-    | '/demo/form/address'
-    | '/demo/form/simple'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contacto'
     | '/nosotros'
-    | '/propiedad'
-    | '/propiedad-temp'
     | '/propiedades'
     | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
     | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
-    | '/propiedad/$propiedadId'
-    | '/demo/form/address'
-    | '/demo/form/simple'
   id:
     | '__root__'
     | '/'
     | '/contacto'
     | '/nosotros'
-    | '/propiedad'
-    | '/propiedad-temp'
     | '/propiedades'
     | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
     | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
     | '/propiedad/$id'
-    | '/propiedad/$propiedadId'
-    | '/demo/form/address'
-    | '/demo/form/simple'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
-  PropiedadRoute: typeof PropiedadRouteWithChildren
-  PropiedadTempRoute: typeof PropiedadTempRoute
   PropiedadesRoute: typeof PropiedadesRoute
   TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route: typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
   TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute: typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
-  DemoFormAddressRoute: typeof DemoFormAddressRoute
-  DemoFormSimpleRoute: typeof DemoFormSimpleRoute
+  PropiedadIdRoute: typeof PropiedadIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -211,20 +148,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PropiedadesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/propiedad-temp': {
-      id: '/propiedad-temp'
-      path: '/propiedad-temp'
-      fullPath: '/propiedad-temp'
-      preLoaderRoute: typeof PropiedadTempRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/propiedad': {
-      id: '/propiedad'
-      path: '/propiedad'
-      fullPath: '/propiedad'
-      preLoaderRoute: typeof PropiedadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/nosotros': {
       id: '/nosotros'
       path: '/nosotros'
@@ -246,64 +169,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/propiedad/$propiedadId': {
-      id: '/propiedad/$propiedadId'
-      path: '/$propiedadId'
-      fullPath: '/propiedad/$propiedadId'
-      preLoaderRoute: typeof PropiedadPropiedadIdRouteImport
-      parentRoute: typeof PropiedadRoute
-    }
     '/propiedad/$id': {
       id: '/propiedad/$id'
-      path: '/$id'
+      path: '/propiedad/$id'
       fullPath: '/propiedad/$id'
       preLoaderRoute: typeof PropiedadIdRouteImport
-      parentRoute: typeof PropiedadRoute
-    }
-    '/demo/form/simple': {
-      id: '/demo/form/simple'
-      path: '/demo/form/simple'
-      fullPath: '/demo/form/simple'
-      preLoaderRoute: typeof DemoFormSimpleRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/demo/form/address': {
-      id: '/demo/form/address'
-      path: '/demo/form/address'
-      fullPath: '/demo/form/address'
-      preLoaderRoute: typeof DemoFormAddressRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface PropiedadRouteChildren {
-  PropiedadIdRoute: typeof PropiedadIdRoute
-  PropiedadPropiedadIdRoute: typeof PropiedadPropiedadIdRoute
-}
-
-const PropiedadRouteChildren: PropiedadRouteChildren = {
-  PropiedadIdRoute: PropiedadIdRoute,
-  PropiedadPropiedadIdRoute: PropiedadPropiedadIdRoute,
-}
-
-const PropiedadRouteWithChildren = PropiedadRoute._addFileChildren(
-  PropiedadRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
-  PropiedadRoute: PropiedadRouteWithChildren,
-  PropiedadTempRoute: PropiedadTempRoute,
   PropiedadesRoute: PropiedadesRoute,
   TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route:
     TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route,
   TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute:
     TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute,
-  DemoFormAddressRoute: DemoFormAddressRoute,
-  DemoFormSimpleRoute: DemoFormSimpleRoute,
+  PropiedadIdRoute: PropiedadIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
