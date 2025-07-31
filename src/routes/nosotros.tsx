@@ -23,7 +23,7 @@ function RouteComponent() {
           <div className="flex flex-col md:flex-row gap-8 mt-10">
             <div className="md:w-1/2 p-2">
               <img
-                src="https://images.unsplash.com/photo-1580587771525-78b9dba3b914?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="/imagenAbout.jpg"
                 alt="Propiedad"
                 className="w-full rounded-xl"
               />
@@ -31,8 +31,7 @@ function RouteComponent() {
             <div className="md:w-1/2 flex flex-col justify-center p-3">
               <h3 className="text-4xl font-bold text-gray-800 mb-6">¿Quiénes somos?</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                En Tu Techo Ahora, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad. <br />
-                Nuestra misión es acompañarte en cada etapa del proceso inmobiliario, ofreciéndote asesoría clara, opciones bien evaluadas y una experiencia que supere tus expectativas.
+                En Tu Techo Ahora, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
               </p>
 
 
@@ -75,17 +74,17 @@ function RouteComponent() {
 
           <div className="flex flex-col md:flex-row gap-4 mt-20 p-2">
             <img
-              src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="/about1.jpg"
               alt="Casa moderna"
               className="w-full md:w-1/3 rounded-xl object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1560448205-17d3a46c84de?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="/about2.jpg"
               alt="Casa rústica"
               className="w-full md:w-1/3 rounded-xl object-cover"
             />
             <img
-              src="https://images.unsplash.com/photo-1560448204-61dc36dc98c8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              src="/about3.jpg"
               alt="Casa acogedora"
               className="w-full md:w-1/3 rounded-xl object-cover"
             />

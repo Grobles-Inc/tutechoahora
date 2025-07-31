@@ -79,7 +79,7 @@ function App() {
           <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
             Un hogar para ti<br />y tu familia
           </h1>
-          <p className="text-lg text-secondary mb-8">
+          <p className="text-lg text-content-base mb-8">
             Encuentra el mejor lugar para vivir y disfrutar cada momento como siempre lo soñaste.
           </p>
           {/* Buscador mejorado */}
@@ -148,9 +148,9 @@ function App() {
         </div>
         <div className="relative">
           <img
-            src="/piscina.png"
+            src="/imagenAbout.jpg"
             alt="Piscina"
-            className="w-full h-64 object-cover rounded-2xl shadow-lg"
+            className="w-full h-auto object-cover rounded-2xl shadow-lg"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
         </div>

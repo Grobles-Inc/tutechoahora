@@ -98,17 +98,6 @@ function RouteComponent() {
               acosme@innovatechapp.com
             </p>
           </div>
-          <a
-            href="https://wa.me/51976655790"
-            target="_blank"
-            className="btn btn-lg btn-circle btn-primary"
-          >
-            <img
-              src="https://img.icons8.com/?size=48&id=16713&format=png"
-              alt="Whatsapp"
-              className="w-8 h-8"
-            />
-          </a>
         </section>
       </div>
     </>
