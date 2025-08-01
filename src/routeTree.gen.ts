@@ -9,26 +9,24 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport } from './routes/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
-import { Route as TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport } from './routes/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
+import { Route as TutechoahoraEditarPropiedadesRouteImport } from './routes/tutechoahora-editar-propiedades'
+import { Route as TutechoahoraAgregarPropiedadesRouteImport } from './routes/tutechoahora-agregar-propiedades'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropiedadIdRouteImport } from './routes/propiedad.$id'
 
-const TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute =
-  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport.update(
-    {
-      id: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
-      path: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
-      getParentRoute: () => rootRouteImport,
-    } as any,
-  )
-const TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route =
-  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport.update({
-    id: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341',
-    path: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341',
+const TutechoahoraEditarPropiedadesRoute =
+  TutechoahoraEditarPropiedadesRouteImport.update({
+    id: '/tutechoahora-editar-propiedades',
+    path: '/tutechoahora-editar-propiedades',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TutechoahoraAgregarPropiedadesRoute =
+  TutechoahoraAgregarPropiedadesRouteImport.update({
+    id: '/tutechoahora-agregar-propiedades',
+    path: '/tutechoahora-agregar-propiedades',
     getParentRoute: () => rootRouteImport,
   } as any)
 const PropiedadesRoute = PropiedadesRouteImport.update({
@@ -62,8 +60,8 @@ export interface FileRoutesByFullPath {
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
-  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
-  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
+  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
+  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesByTo {
@@ -71,8 +69,8 @@ export interface FileRoutesByTo {
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
-  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
-  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
+  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
+  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesById {
@@ -81,8 +79,8 @@ export interface FileRoutesById {
   '/contacto': typeof ContactoRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
-  '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
-  '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
+  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
+  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRouteTypes {
@@ -92,8 +90,8 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/nosotros'
     | '/propiedades'
-    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+    | '/tutechoahora-agregar-propiedades'
+    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -101,8 +99,8 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/nosotros'
     | '/propiedades'
-    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+    | '/tutechoahora-agregar-propiedades'
+    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   id:
     | '__root__'
@@ -110,8 +108,8 @@ export interface FileRouteTypes {
     | '/contacto'
     | '/nosotros'
     | '/propiedades'
-    | '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-    | '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
+    | '/tutechoahora-agregar-propiedades'
+    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   fileRoutesById: FileRoutesById
 }
@@ -120,25 +118,25 @@ export interface RootRouteChildren {
   ContactoRoute: typeof ContactoRoute
   NosotrosRoute: typeof NosotrosRoute
   PropiedadesRoute: typeof PropiedadesRoute
-  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route: typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route
-  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute: typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute
+  TutechoahoraAgregarPropiedadesRoute: typeof TutechoahoraAgregarPropiedadesRoute
+  TutechoahoraEditarPropiedadesRoute: typeof TutechoahoraEditarPropiedadesRoute
   PropiedadIdRoute: typeof PropiedadIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa': {
-      id: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
-      path: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
-      fullPath: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa'
-      preLoaderRoute: typeof TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRouteImport
+    '/tutechoahora-editar-propiedades': {
+      id: '/tutechoahora-editar-propiedades'
+      path: '/tutechoahora-editar-propiedades'
+      fullPath: '/tutechoahora-editar-propiedades'
+      preLoaderRoute: typeof TutechoahoraEditarPropiedadesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341': {
-      id: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-      path: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-      fullPath: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341'
-      preLoaderRoute: typeof TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341RouteImport
+    '/tutechoahora-agregar-propiedades': {
+      id: '/tutechoahora-agregar-propiedades'
+      path: '/tutechoahora-agregar-propiedades'
+      fullPath: '/tutechoahora-agregar-propiedades'
+      preLoaderRoute: typeof TutechoahoraAgregarPropiedadesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/propiedades': {
@@ -184,10 +182,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactoRoute: ContactoRoute,
   NosotrosRoute: NosotrosRoute,
   PropiedadesRoute: PropiedadesRoute,
-  TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route:
-    TutechoAhoraAgregarPropiedadesA14ada11251agasdg2321341Route,
-  TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute:
-    TutechoAhoraEditarPropiedadesAkj14j1jasdf123154j2l51kjiqdoaRoute,
+  TutechoahoraAgregarPropiedadesRoute: TutechoahoraAgregarPropiedadesRoute,
+  TutechoahoraEditarPropiedadesRoute: TutechoahoraEditarPropiedadesRoute,
   PropiedadIdRoute: PropiedadIdRoute,
 }
 export const routeTree = rootRouteImport

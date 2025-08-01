@@ -6,7 +6,7 @@ const JSONBIN_MASTER_KEY = "$2a$10$nobY12xjte.MZ8ULE6NMTuH2yyjO.r.8veMsJchqYuoKI
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
 
-export const Route = createFileRoute('/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341')({
+export const Route = createFileRoute('/tutechoahora-agregar-propiedades')({
   validateSearch: z.object({
     id: z.string().optional().or(z.number().optional()),
   }),
@@ -146,7 +146,7 @@ function AddEditProperty() {
 
         alert(`Propiedad ${isEditMode ? 'actualizada' : 'agregada'} correctamente!`);
         navigate({
-          to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa',
+          to: '/tutechoahora-editar-propiedades',
         })
       } catch (error: any) {
         console.error(`Error ${isEditMode ? 'updating' : 'adding'} property:`, error);
@@ -187,7 +187,7 @@ function AddEditProperty() {
             setUploadedImages(propertyToEdit.imagenes || [])
           } else {
             alert('Propiedad no encontrada.')
-            navigate({ to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa' })
+            navigate({ to: '/tutechoahora-editar-propiedades' })
           }
         } catch (error) {
           console.error('Error fetching property:', error)
@@ -316,7 +316,7 @@ function AddEditProperty() {
             {(field) => (
               <div className="form-control w-full">
                 <field.TextField
-                  label="Area de Terreno (m²)"
+                  label="Area / Superficie (m²)"
                   type="number"
                   placeholder="0"
                 />
@@ -340,11 +340,12 @@ function AddEditProperty() {
             {(field) => (
               <div className="form-control w-full">
                 <field.Select
-                  label="Tipo de Vivienda"
+                  label="Tipo de Propiedad"
                   values={[
                     { value: '', label: 'Seleccione tipo de vivienda' },
                     { value: 'Casa', label: 'Casa' },
                     { value: 'Departamento', label: 'Departamento' },
+                    { value: 'Local', label: 'Local' },
                     { value: 'Terreno', label: 'Terreno' },
                   ]}
                 />
@@ -518,7 +519,7 @@ function AddEditProperty() {
             <button
               type="button"
               className="btn btn-outline"
-              onClick={() => navigate({ to: '/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa' })}
+              onClick={() => navigate({ to: '/tutechoahora-editar-propiedades' })}
             >
               Cancelar
             </button>

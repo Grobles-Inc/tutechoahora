@@ -13,7 +13,7 @@ export const Route = createFileRoute('/propiedad/$id')({
           'X-Bin-Meta': 'false',
         },
       })
-      
+
       if (!response.ok) {
         console.error('Error fetching data from API:', response.status)
         return {
@@ -22,14 +22,14 @@ export const Route = createFileRoute('/propiedad/$id')({
           error: 'Error al cargar los datos'
         }
       }
-      
+
       const data = await response.json()
       const propiedades = Array.isArray(data) ? data : data.record || []
-      
+
       // Buscar la propiedad específica por ID
       // Convertir ambos IDs a string para comparación consistente
       const propiedad = propiedades.find((p: any) => String(p.id) === String(params.id))
-      
+
       return {
         propiedad: propiedad || null,
         relacionados: propiedad ? propiedades.filter((p: any) => String(p.id) !== String(params.id)).slice(0, 4) : [],
@@ -63,7 +63,7 @@ function PropiedadDetailComponent() {
           <p className="text-lg text-secondary mb-6">
             La propiedad que buscas no existe o no está disponible.
           </p>
-          <button 
+          <button
             onClick={() => router.navigate({ to: '/' })}
             className="btn btn-primary"
           >
@@ -77,7 +77,7 @@ function PropiedadDetailComponent() {
   const handleWhatsAppContact = () => {
     const currentUrl = window.location.href
     const precio = typeof propiedad.precio === 'number' ? `$${propiedad.precio.toLocaleString()}` : propiedad.precio
-    
+
     const message = `🏠 *INFORMACIÓN DE PROPIEDAD*
 
  *${propiedad.titulo}*
@@ -87,7 +87,7 @@ function PropiedadDetailComponent() {
 ${currentUrl}
 
 ¡Me interesa esta propiedad! ¿Podrían brindarme más información?`
-    
+
     const whatsappUrl = `https://wa.me/51970000000?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
@@ -105,7 +105,7 @@ ${currentUrl}
       {/* Header con botón de regreso */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-screen-xl mx-auto px-4 py-4">
-          <button 
+          <button
             onClick={handleGoBack}
             className="flex items-center gap-2 text-gray-600 hover:text-primary transition-colors"
           >
@@ -122,22 +122,22 @@ ${currentUrl}
         <div className="mb-8">
           {/* Imagen principal - ancho completo */}
           <div className="w-full mb-4">
-            <img 
-              src={propiedad.imagenes?.[0] || "/placeholder.jpg"} 
-              alt="Imagen principal" 
-              className="rounded-xl w-full h-64 md:h-96 object-cover shadow-lg" 
+            <img
+              src={propiedad.imagenes?.[0] || "/placeholder.jpg"}
+              alt="Imagen principal"
+              className="rounded-xl w-full h-64 md:h-96 object-cover shadow-lg"
             />
           </div>
-          
+
           {/* Imágenes adicionales - debajo de la principal */}
           {propiedad.imagenes && propiedad.imagenes.length > 1 && (
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {propiedad.imagenes.slice(1).map((imagen: string, index: number) => (
-                <img 
+                <img
                   key={index}
-                  src={imagen || "/placeholder.jpg"} 
-                  alt={`Imagen ${index + 2}`} 
-                  className="rounded-lg w-full h-24 md:h-32 object-cover shadow-md hover:shadow-lg transition-shadow cursor-pointer" 
+                  src={imagen || "/placeholder.jpg"}
+                  alt={`Imagen ${index + 2}`}
+                  className="rounded-lg w-full h-24 md:h-32 object-cover shadow-md hover:shadow-lg transition-shadow cursor-pointer"
                 />
               ))}
             </div>
@@ -150,7 +150,7 @@ ${currentUrl}
             {/* Título y ubicación */}
             <div>
               <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">{propiedad.titulo}</h1>
-              
+
               {/* Ubicación */}
               {propiedad.ubicacion && (
                 <div className="flex items-center gap-2 text-gray-600 mb-2">
@@ -163,7 +163,7 @@ ${currentUrl}
               )}
 
               {/* Información básica con iconos */}
-              
+
             </div>
 
             {/* Descripción */}
@@ -179,8 +179,8 @@ ${currentUrl}
               <div className="bg-white rounded-xl p-6 shadow-sm">
                 <h2 className="text-xl font-semibold text-gray-900 mb-4">Características</h2>
                 <div className="grid md:grid-cols-2 gap-3">
-                  {(Array.isArray(propiedad.caracteristicas) 
-                    ? propiedad.caracteristicas 
+                  {(Array.isArray(propiedad.caracteristicas)
+                    ? propiedad.caracteristicas
                     : propiedad.caracteristicas.split(',').map((item: string) => item.trim())
                   ).map((caracteristica: string, index: number) => (
                     <div key={index} className="flex items-center gap-2">
@@ -199,7 +199,7 @@ ${currentUrl}
           <div className="space-y-6">
             {/* Card principal */}
             <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-lg sticky top-6">
-              
+
               {/* Precio destacado */}
               <div className="mb-6 text-center">
                 <div className="flex items-center justify-center gap-2 mb-2">
@@ -233,7 +233,7 @@ ${currentUrl}
                       <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z" />
                     </svg>
                     <div>
-                      <div className="text-sm text-gray-600">Tipo de Vivienda</div>
+                      <div className="text-sm text-gray-600">Tipo de Propiedad</div>
                       <div className="font-semibold text-green-700">{propiedad.tipoVivienda}</div>
                     </div>
                   </div>
@@ -245,7 +245,7 @@ ${currentUrl}
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
                     </svg>
                     <div>
-                      <div className="text-sm text-gray-600">Área del Terreno</div>
+                      <div className="text-sm text-gray-600">Área / Superficie</div>
                       <div className="font-semibold text-orange-700">{propiedad.areaTerreno}m²</div>
                     </div>
                   </div>
@@ -253,12 +253,12 @@ ${currentUrl}
               </div>
 
               {/* Botón de contacto mejorado */}
-              <button 
+              <button
                 onClick={handleWhatsAppContact}
                 className="w-full bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg font-semibold flex items-center justify-center gap-3 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
               >
                 <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488"/>
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
                 </svg>
                 <span>Consultar por WhatsApp</span>
               </button>
@@ -289,7 +289,7 @@ ${currentUrl}
                   className="w-full h-64 md:h-96"
                   title="Ubicación de la propiedad"
                 />
-                
+
                 {/* Información de coordenadas superpuesta */}
                 <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3 shadow-lg">
                   <div className="flex items-center gap-2 text-sm">
@@ -299,7 +299,7 @@ ${currentUrl}
                     </svg>
                     <span className="font-medium text-gray-700">{propiedad.coordenadas}</span>
                   </div>
-                  
+
                   {/* Botones para abrir en diferentes mapas */}
                   <div className="mt-2 space-y-1">
                     <button
