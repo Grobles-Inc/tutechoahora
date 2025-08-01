@@ -18,7 +18,7 @@ function RouteComponent() {
       <div>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-primary text-center text-3xl md:text-6xl">
-            Una cálida bienvenida a <br /> TuTechoAhora
+            Una cálida bienvenida a <br /> Tu Techo Ahora
           </h2>
           <div className="flex flex-col md:flex-row gap-8 mt-10">
             <div className="md:w-1/2 p-2">

@@ -4,7 +4,7 @@ import { useState } from 'react';
 const JSONBIN_MASTER_KEY = import.meta.env.VITE_JSONBIN_MASTER_KEY;
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
-export const Route = createFileRoute('/tutecho-ahora-editar-propiedades-akj14j1jasdf123154j2l51kjiqdoa')({
+export const Route = createFileRoute('/tutechoahora-editar-propiedades')({
   loader: async () => {
     const response = await fetch(`https://api.jsonbin.io/v3/b/${JSONBIN_BIN_ID}/latest`, {
       headers: {
@@ -29,7 +29,7 @@ function RouteComponent() {
   const handleEdit = (property: any) => {
     if (property.id) {
       router.navigate({
-        to: '/tutecho-ahora-agregar-propiedades-a14ada11251agasdg2321341',
+        to: '/tutechoahora-agregar-propiedades',
         search: { id: property.id },
       })
     }
