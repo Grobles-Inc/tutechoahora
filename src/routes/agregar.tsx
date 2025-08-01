@@ -378,7 +378,6 @@ function AddEditProperty() {
               <div className="form-control w-full">
                 <field.TextArea
                   label="Descripción"
-                  rows={4}
                   placeholder="Descripción de la Propiedad"
                 />
               </div>

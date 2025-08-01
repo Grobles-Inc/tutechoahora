@@ -1,10 +1,12 @@
 import { Link } from '@tanstack/react-router'
 import { useRef, useEffect } from 'react'
 import BotonContacto from './BotonContacto'
+import { useAuth } from '@/contexts/AuthContext'
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null)
   const drawerCheckboxRef = useRef<HTMLInputElement>(null)
+  const { isAuthenticated } = useAuth()
 
   useEffect(() => {
     const header = headerRef.current
@@ -103,6 +105,14 @@ export default function Header() {
               >
                 <BotonContacto />
               </Link>
+              {isAuthenticated && (
+                <Link
+                  to="/dashboard"
+                  className="btn btn-primary text-white ml-4 rounded-full btn-lg"
+                >
+                  Panel
+                </Link>
+              )}
             </div>
           </div>
         </div>
@@ -193,6 +203,16 @@ export default function Header() {
                 <BotonContacto />
               </Link>
             </li>
+            {isAuthenticated && (
+              <li onClick={() => drawerCheckboxRef.current && (drawerCheckboxRef.current.checked = false)}>
+                <Link
+                  to="/dashboard"
+                  className="btn btn-primary"
+                >
+                  Panel de Administración
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>
