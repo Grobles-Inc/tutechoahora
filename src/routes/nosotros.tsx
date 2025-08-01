@@ -73,7 +73,7 @@ function RouteComponent() {
 
 
           <div className="gap-4 mt-20 p-2">
-            <h2 className="text-5xl text-primary text-center font-black mb-6">Gran variedad de propiedades</h2>
+            <h2 className="text-3xl md:text-5xl text-primary text-center font-black mb-6">Gran variedad de propiedades</h2>
             <p className='text-center text-gray-600 mb-8'>En TuTechoAhora, te ofrecemos una amplia gama de propiedades para que encuentres la que mejor se adapte a tus necesidades.</p>
             <div className='flex flex-col md:flex-row gap-4'>
               <img
