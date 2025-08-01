@@ -18,7 +18,7 @@ function RouteComponent() {
       <div>
         <div className="max-w-7xl mx-auto">
           <h2 className="text-primary text-center text-3xl md:text-6xl">
-            Una cálida bienvenida a <br /> TuTechoAhora
+            ¡Llegó el momento de <br /> conocer TuTechoAhora!
           </h2>
           <div className="flex flex-col md:flex-row gap-8 mt-10">
             <div className="md:w-1/2 p-2">
@@ -31,7 +31,7 @@ function RouteComponent() {
             <div className="md:w-1/2 flex flex-col justify-center p-3">
               <h3 className="text-4xl font-bold text-gray-800 mb-6">¿Quiénes somos?</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                En Tu Techo Ahora, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
+                En <span className="text-primary font-black">TuTechoAhora</span>, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
               </p>
 
 
@@ -76,17 +76,17 @@ function RouteComponent() {
             <img
               src="/about1.jpg"
               alt="Casa moderna"
-              className="w-full md:w-1/3 rounded-xl object-cover"
+              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
             />
             <img
-              src="/about2.jpg"
+              src="/beneficiosSection2.jpg"
               alt="Casa rústica"
-              className="w-full md:w-1/3 rounded-xl object-cover"
+              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
             />
             <img
-              src="/about3.jpg"
+              src="/beneficiosSection.jpg"
               alt="Casa acogedora"
-              className="w-full md:w-1/3 rounded-xl object-cover"
+              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
             />
           </div>
         </div>
