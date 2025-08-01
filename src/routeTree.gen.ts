@@ -9,26 +9,26 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TutechoahoraEditarPropiedadesRouteImport } from './routes/tutechoahora-editar-propiedades'
 import { Route as TutechoahoraAgregarPropiedadesRouteImport } from './routes/tutechoahora-agregar-propiedades'
+import { Route as SigninRouteImport } from './routes/signin'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropiedadIdRouteImport } from './routes/propiedad.$id'
 
-const TutechoahoraEditarPropiedadesRoute =
-  TutechoahoraEditarPropiedadesRouteImport.update({
-    id: '/tutechoahora-editar-propiedades',
-    path: '/tutechoahora-editar-propiedades',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const TutechoahoraAgregarPropiedadesRoute =
   TutechoahoraAgregarPropiedadesRouteImport.update({
     id: '/tutechoahora-agregar-propiedades',
     path: '/tutechoahora-agregar-propiedades',
     getParentRoute: () => rootRouteImport,
   } as any)
+const SigninRoute = SigninRouteImport.update({
+  id: '/signin',
+  path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PropiedadesRoute = PropiedadesRouteImport.update({
   id: '/propiedades',
   path: '/propiedades',
@@ -37,6 +37,11 @@ const PropiedadesRoute = PropiedadesRouteImport.update({
 const NosotrosRoute = NosotrosRouteImport.update({
   id: '/nosotros',
   path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -58,29 +63,32 @@ const PropiedadIdRoute = PropiedadIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
+  '/signin': typeof SigninRoute
   '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
-  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
+  '/signin': typeof SigninRoute
   '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
-  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
+  '/signin': typeof SigninRoute
   '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
-  '/tutechoahora-editar-propiedades': typeof TutechoahoraEditarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRouteTypes {
@@ -88,55 +96,59 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/contacto'
+    | '/dashboard'
     | '/nosotros'
     | '/propiedades'
+    | '/signin'
     | '/tutechoahora-agregar-propiedades'
-    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/contacto'
+    | '/dashboard'
     | '/nosotros'
     | '/propiedades'
+    | '/signin'
     | '/tutechoahora-agregar-propiedades'
-    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   id:
     | '__root__'
     | '/'
     | '/contacto'
+    | '/dashboard'
     | '/nosotros'
     | '/propiedades'
+    | '/signin'
     | '/tutechoahora-agregar-propiedades'
-    | '/tutechoahora-editar-propiedades'
     | '/propiedad/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
+  DashboardRoute: typeof DashboardRoute
   NosotrosRoute: typeof NosotrosRoute
   PropiedadesRoute: typeof PropiedadesRoute
+  SigninRoute: typeof SigninRoute
   TutechoahoraAgregarPropiedadesRoute: typeof TutechoahoraAgregarPropiedadesRoute
-  TutechoahoraEditarPropiedadesRoute: typeof TutechoahoraEditarPropiedadesRoute
   PropiedadIdRoute: typeof PropiedadIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tutechoahora-editar-propiedades': {
-      id: '/tutechoahora-editar-propiedades'
-      path: '/tutechoahora-editar-propiedades'
-      fullPath: '/tutechoahora-editar-propiedades'
-      preLoaderRoute: typeof TutechoahoraEditarPropiedadesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/tutechoahora-agregar-propiedades': {
       id: '/tutechoahora-agregar-propiedades'
       path: '/tutechoahora-agregar-propiedades'
       fullPath: '/tutechoahora-agregar-propiedades'
       preLoaderRoute: typeof TutechoahoraAgregarPropiedadesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signin': {
+      id: '/signin'
+      path: '/signin'
+      fullPath: '/signin'
+      preLoaderRoute: typeof SigninRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/propiedades': {
@@ -151,6 +163,13 @@ declare module '@tanstack/react-router' {
       path: '/nosotros'
       fullPath: '/nosotros'
       preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -180,10 +199,11 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
+  DashboardRoute: DashboardRoute,
   NosotrosRoute: NosotrosRoute,
   PropiedadesRoute: PropiedadesRoute,
+  SigninRoute: SigninRoute,
   TutechoahoraAgregarPropiedadesRoute: TutechoahoraAgregarPropiedadesRoute,
-  TutechoahoraEditarPropiedadesRoute: TutechoahoraEditarPropiedadesRoute,
   PropiedadIdRoute: PropiedadIdRoute,
 }
 export const routeTree = rootRouteImport

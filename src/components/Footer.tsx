@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 
 export default function Footer() {
   const today = new Date();
@@ -9,7 +10,9 @@ export default function Footer() {
           data-aos="fade-up"
         >
           <div className="flex items-center gap-2 mb-6">
-            <img src="/logoSecundario.png" alt="Logo" className="h-24" />
+            <Link to="/signin">
+              <img src="/logoSecundario.png" alt="Logo" className="h-24" />
+            </Link>
           </div>
 
           <div>

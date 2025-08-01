@@ -1,4 +1,4 @@
-import { createFileRoute, useNavigate, useSearch } from '@tanstack/react-router'
+import { createFileRoute, useNavigate, useSearch, redirect } from '@tanstack/react-router'
 import { z } from 'zod'
 import { useAppForm } from '../hooks/demo.form'
 import { useEffect, useState } from 'react'
@@ -7,6 +7,14 @@ const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
 
 export const Route = createFileRoute('/tutechoahora-agregar-propiedades')({
+  beforeLoad: () => {
+    const authStatus = localStorage.getItem('tutechoahora-auth')
+    if (authStatus !== 'true') {
+      throw redirect({
+        to: '/signin',
+      })
+    }
+  },
   validateSearch: z.object({
     id: z.string().optional().or(z.number().optional()),
   }),
@@ -146,7 +154,7 @@ function AddEditProperty() {
 
         alert(`Propiedad ${isEditMode ? 'actualizada' : 'agregada'} correctamente!`);
         navigate({
-          to: '/tutechoahora-editar-propiedades',
+          to: '/dashboard',
         })
       } catch (error: any) {
         console.error(`Error ${isEditMode ? 'updating' : 'adding'} property:`, error);
@@ -187,7 +195,7 @@ function AddEditProperty() {
             setUploadedImages(propertyToEdit.imagenes || [])
           } else {
             alert('Propiedad no encontrada.')
-            navigate({ to: '/tutechoahora-editar-propiedades' })
+            navigate({ to: '/dashboard' })
           }
         } catch (error) {
           console.error('Error fetching property:', error)
@@ -519,7 +527,7 @@ function AddEditProperty() {
             <button
               type="button"
               className="btn btn-outline"
-              onClick={() => navigate({ to: '/tutechoahora-editar-propiedades' })}
+              onClick={() => navigate({ to: '/dashboard' })}
             >
               Cancelar
             </button>
