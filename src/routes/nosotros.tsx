@@ -23,7 +23,7 @@ function RouteComponent() {
           <div className="flex flex-col md:flex-row gap-8 mt-10">
             <div className="md:w-1/2 p-2">
               <img
-                src="/imagenAbout.jpg"
+                src="/portico.jpg"
                 alt="Propiedad"
                 className="w-full rounded-xl"
               />
@@ -31,7 +31,7 @@ function RouteComponent() {
             <div className="md:w-1/2 flex flex-col justify-center p-3">
               <h3 className="text-4xl font-bold text-gray-800 mb-6">¿Quiénes somos?</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                En <span className="text-primary">TuTechoAhora</span>, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
+                En <span className="text-primary">TuTechoAhora</span>, somos un equipo de profesionales comprometidos con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza, tranquilidad y eficiencia.
               </p>
 
 
