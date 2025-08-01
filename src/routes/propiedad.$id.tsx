@@ -103,7 +103,7 @@ ${currentUrl}
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header con botón de regreso */}
-      <div className="bg-white shadow-sm border-b">
+      <div>
         <div className="max-w-screen-xl mx-auto px-4 py-4">
           <button
             onClick={handleGoBack}
@@ -112,36 +112,69 @@ ${currentUrl}
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
             </svg>
-            Volver
+            Volver Atrás
           </button>
         </div>
       </div>
 
       <section className="max-w-screen-xl mx-auto px-4 py-6 md:py-12">
-        {/* Galería de imágenes */}
-        <div className="mb-8">
-          {/* Imagen principal - ancho completo */}
-          <div className="w-full mb-4">
-            <img
-              src={propiedad.imagenes?.[0] || "/placeholder.jpg"}
-              alt="Imagen principal"
-              className="rounded-xl w-full h-64 md:h-96 object-cover shadow-lg"
-            />
-          </div>
-
-          {/* Imágenes adicionales - debajo de la principal */}
-          {propiedad.imagenes && propiedad.imagenes.length > 1 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {propiedad.imagenes.slice(1).map((imagen: string, index: number) => (
-                <img
-                  key={index}
-                  src={imagen || "/placeholder.jpg"}
-                  alt={`Imagen ${index + 2}`}
-                  className="rounded-lg w-full h-24 md:h-32 object-cover shadow-md hover:shadow-lg transition-shadow cursor-pointer"
-                />
-              ))}
+        {/* Galería de imágenes - Carousel DaisyUI */}
+        <div className="mb-8 ">
+          <div className="w-full">
+            <div className="carousel w-full rounded-xl shadow-lg h-64 md:h-96 bg-base-200">
+              {(() => {
+                const images = propiedad.imagenes && propiedad.imagenes.length > 0 ? propiedad.imagenes : ["/placeholder.jpg"];
+                const slides = [...images];
+                const hasVideo = !!propiedad.videoUrl;
+                if (hasVideo) slides.push("__VIDEO__");
+                return slides.map((item: string, idx: number) => {
+                  const isVideo = item === "__VIDEO__";
+                  return (
+                    <div
+                      key={idx}
+                      id={`slide-${idx}`}
+                      className="carousel-item relative w-full h-64 md:h-96"
+                    >
+                      {isVideo ? (
+                        <iframe
+                          src={propiedad.videoUrl.replace(
+                            /(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+).*/,
+                            'https://www.youtube.com/embed/$1'
+                          )}
+                          className="w-full h-full"
+                          allowFullScreen
+                          loading="lazy"
+                          title="Video de la propiedad"
+                        />
+                      ) : (
+                        <img
+                          src={item || "/placeholder.jpg"}
+                          alt={`Imagen ${idx + 1}`}
+                          className="w-full h-64 md:h-96 object-cover"
+                        />
+                      )}
+                      {slides.length > 1 && (
+                        <>
+                          <a
+                            href={`#slide-${(idx - 1 + slides.length) % slides.length}`}
+                            className="btn btn-circle btn-sm absolute left-2 top-1/2"
+                          >
+                            ❮
+                          </a>
+                          <a
+                            href={`#slide-${(idx + 1) % slides.length}`}
+                            className="btn btn-circle btn-sm absolute right-2 top-1/2"
+                          >
+                            ❯
+                          </a>
+                        </>
+                      )}
+                    </div>
+                  );
+                });
+              })()}
             </div>
-          )}
+          </div>
         </div>
 
         {/* Información principal */}

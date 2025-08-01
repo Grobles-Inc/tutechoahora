@@ -6,7 +6,7 @@ const JSONBIN_MASTER_KEY = "$2a$10$nobY12xjte.MZ8ULE6NMTuH2yyjO.r.8veMsJchqYuoKI
 const JSONBIN_BIN_ID = "6884f7eaae596e708fbc1e19"
 
 
-export const Route = createFileRoute('/tutechoahora-agregar-propiedades')({
+export const Route = createFileRoute('/agregar')({
   beforeLoad: () => {
     const authStatus = localStorage.getItem('tutechoahora-auth')
     if (authStatus !== 'true') {
@@ -31,6 +31,7 @@ const schema = z.object({
   tipoVivienda: z.string().min(1, 'Tipo de Vivienda es requerido'),
   caracteristicas: z.string().optional(),
   imagenes: z.string().array().optional(),
+  videoUrl: z.string().optional(),
   coordenadas: z.string().optional(),
 })
 
@@ -57,6 +58,7 @@ function AddEditProperty() {
       tipoVivienda: '',
       caracteristicas: '',
       imagenes: [],
+      videoUrl: '',
     },
     validators: {
       onSubmit: ({ value }) => {
@@ -192,6 +194,7 @@ function AddEditProperty() {
             form.setFieldValue('tipoVivienda', propertyToEdit.tipoVivienda || '')
             form.setFieldValue('caracteristicas', propertyToEdit.caracteristicas || '')
             form.setFieldValue('coordenadas', propertyToEdit.coordenadas || '')
+            form.setFieldValue('videoUrl', propertyToEdit.videoUrl || '')
             setUploadedImages(propertyToEdit.imagenes || [])
           } else {
             alert('Propiedad no encontrada.')
@@ -277,7 +280,7 @@ function AddEditProperty() {
               <div className="form-control w-full">
                 <field.TextField
                   label="Título"
-                  placeholder="Título de la Propiedad"
+                  placeholder="Título de la Publicación"
                 />
               </div>
             )}
@@ -299,7 +302,7 @@ function AddEditProperty() {
               <div className="form-control w-full">
                 <field.TextField
                   label="Coordenadas"
-                  placeholder="Coordenadas de la Propiedad"
+                  placeholder="-12.123456, -77.123456"
                 />
               </div>
             )}
@@ -360,7 +363,16 @@ function AddEditProperty() {
               </div>
             )}
           </form.AppField>
-
+          <form.AppField name="videoUrl">
+            {(field) => (
+              <div className="form-control w-full">
+                <field.TextField
+                  label="URL del Video"
+                  placeholder="URL del Video"
+                />
+              </div>
+            )}
+          </form.AppField>
           <form.AppField name="descripcion">
             {(field) => (
               <div className="form-control w-full">
@@ -384,6 +396,8 @@ function AddEditProperty() {
               </div>
             )}
           </form.AppField>
+
+
 
           <div className="form-control w-full col-span-2">
             <label className="label">
@@ -523,7 +537,15 @@ function AddEditProperty() {
           </div>
           <div />
           <div className="modal-action  flex items-center gap-4">
-            <form.SubscribeButton label={isEditMode ? 'Guardar Cambios' : 'Guardar Propiedad'} />
+            {
+              isLoading ? (
+                <button className="btn btn-primary" disabled>
+                  <span className="loading loading-spinner loading-sm"></span>
+                </button>
+              ) : (
+                <form.SubscribeButton label={isEditMode ? 'Guardar Cambios' : 'Guardar Propiedad'} />
+              )
+            }
             <button
               type="button"
               className="btn btn-outline"

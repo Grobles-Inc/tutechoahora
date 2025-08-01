@@ -1,4 +1,4 @@
-import { createFileRoute, redirect, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, Link, redirect, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
 import SEO from '../components/SEO'
 import { useAuth } from '../contexts/AuthContext'
@@ -40,14 +40,14 @@ function Dashboard() {
   const handleEdit = (property: any) => {
     if (property.id) {
       navigate({
-        to: '/tutechoahora-agregar-propiedades',
+        to: '/agregar',
         search: { id: property.id },
       })
     }
   }
 
   const handleAddProperty = () => {
-    navigate({ to: '/tutechoahora-agregar-propiedades' })
+    navigate({ to: '/agregar' })
   }
 
   const openDeleteModal = (property: any) => {
@@ -103,16 +103,22 @@ function Dashboard() {
         description="Panel de administración para gestionar propiedades"
         keywords="dashboard, admin, propiedades, gestión"
       />
-      <div className="w-11/12 lg:max-w-6xl mx-auto py-8">
+      <div className=" lg:max-w-6xl mx-auto py-8 p-4">
         {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold">Dashboard</h1>
-            <p className="text-base-content/70 mt-1">Gestión de Propiedades</p>
+        <div className="flex flex-col md:flex-row justify-between lg:items-center mb-8">
+          <div className="flex flex-col gap-2">
+
+            <Link to="/">
+              <img src="/logoPrincipal.jpg" alt="Logo" className="h-16" />
+            </Link>
+            <div>
+              <h1 className="text-3xl font-bold">Dashboard</h1>
+              <p className="text-base-content/70 mt-1">Gestión de Propiedades</p>
+            </div>
           </div>
-          <div className="flex gap-3">
+          <div className="flex gap-3 mt-4">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary btn-sm lg:btn-lg"
               onClick={handleAddProperty}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -121,7 +127,7 @@ function Dashboard() {
               Agregar Propiedad
             </button>
             <button
-              className="btn btn-outline btn-error"
+              className="btn btn-outline btn-error btn-sm lg:btn-lg"
               onClick={handleLogout}
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -135,7 +141,7 @@ function Dashboard() {
         {/* Stats */}
         <div className="stats shadow mb-8">
           <div className="stat">
-            <div className="stat-title">Total Propiedades</div>
+            <div className="stat-title">Total </div>
             <div className="stat-value text-primary">{properties.length}</div>
           </div>
           <div className="stat">

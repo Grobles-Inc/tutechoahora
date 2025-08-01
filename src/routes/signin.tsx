@@ -1,7 +1,7 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute, Link, useNavigate } from '@tanstack/react-router'
 import { useState } from 'react'
-import { useAuth } from '../contexts/AuthContext'
 import SEO from '../components/SEO'
+import { useAuth } from '../contexts/AuthContext'
 
 export const Route = createFileRoute('/signin')({
   component: SignIn,
@@ -56,9 +56,11 @@ function SignIn() {
       <div className="min-h-screen flex items-center justify-center bg-base-200">
         <div className="card w-full max-w-md bg-base-100 shadow-xl">
           <div className="card-body">
-            <div className="text-center mb-6">
-              <h1 className="text-2xl font-bold">Tu Techo Ahora</h1>
-              <p className="text-base-content/70">Panel de Administración</p>
+            <div className=" mb-6">
+              <Link to="/">
+                <img src="/logoPrincipal.jpg" alt="Logo" className="h-16" />
+              </Link>
+              <h2 className="text-xl font-bold mt-4 uppercase">Panel de Administración</h2>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">

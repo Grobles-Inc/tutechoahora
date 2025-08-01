@@ -9,21 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TutechoahoraAgregarPropiedadesRouteImport } from './routes/tutechoahora-agregar-propiedades'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as PropiedadesRouteImport } from './routes/propiedades'
 import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as AgregarRouteImport } from './routes/agregar'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PropiedadIdRouteImport } from './routes/propiedad.$id'
 
-const TutechoahoraAgregarPropiedadesRoute =
-  TutechoahoraAgregarPropiedadesRouteImport.update({
-    id: '/tutechoahora-agregar-propiedades',
-    path: '/tutechoahora-agregar-propiedades',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
@@ -49,6 +43,11 @@ const ContactoRoute = ContactoRouteImport.update({
   path: '/contacto',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AgregarRoute = AgregarRouteImport.update({
+  id: '/agregar',
+  path: '/agregar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -62,88 +61,81 @@ const PropiedadIdRoute = PropiedadIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agregar': typeof AgregarRoute
   '/contacto': typeof ContactoRoute
   '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
   '/signin': typeof SigninRoute
-  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agregar': typeof AgregarRoute
   '/contacto': typeof ContactoRoute
   '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
   '/signin': typeof SigninRoute
-  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agregar': typeof AgregarRoute
   '/contacto': typeof ContactoRoute
   '/dashboard': typeof DashboardRoute
   '/nosotros': typeof NosotrosRoute
   '/propiedades': typeof PropiedadesRoute
   '/signin': typeof SigninRoute
-  '/tutechoahora-agregar-propiedades': typeof TutechoahoraAgregarPropiedadesRoute
   '/propiedad/$id': typeof PropiedadIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agregar'
     | '/contacto'
     | '/dashboard'
     | '/nosotros'
     | '/propiedades'
     | '/signin'
-    | '/tutechoahora-agregar-propiedades'
     | '/propiedad/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agregar'
     | '/contacto'
     | '/dashboard'
     | '/nosotros'
     | '/propiedades'
     | '/signin'
-    | '/tutechoahora-agregar-propiedades'
     | '/propiedad/$id'
   id:
     | '__root__'
     | '/'
+    | '/agregar'
     | '/contacto'
     | '/dashboard'
     | '/nosotros'
     | '/propiedades'
     | '/signin'
-    | '/tutechoahora-agregar-propiedades'
     | '/propiedad/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgregarRoute: typeof AgregarRoute
   ContactoRoute: typeof ContactoRoute
   DashboardRoute: typeof DashboardRoute
   NosotrosRoute: typeof NosotrosRoute
   PropiedadesRoute: typeof PropiedadesRoute
   SigninRoute: typeof SigninRoute
-  TutechoahoraAgregarPropiedadesRoute: typeof TutechoahoraAgregarPropiedadesRoute
   PropiedadIdRoute: typeof PropiedadIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/tutechoahora-agregar-propiedades': {
-      id: '/tutechoahora-agregar-propiedades'
-      path: '/tutechoahora-agregar-propiedades'
-      fullPath: '/tutechoahora-agregar-propiedades'
-      preLoaderRoute: typeof TutechoahoraAgregarPropiedadesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/signin': {
       id: '/signin'
       path: '/signin'
@@ -179,6 +171,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactoRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/agregar': {
+      id: '/agregar'
+      path: '/agregar'
+      fullPath: '/agregar'
+      preLoaderRoute: typeof AgregarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -198,12 +197,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgregarRoute: AgregarRoute,
   ContactoRoute: ContactoRoute,
   DashboardRoute: DashboardRoute,
   NosotrosRoute: NosotrosRoute,
   PropiedadesRoute: PropiedadesRoute,
   SigninRoute: SigninRoute,
-  TutechoahoraAgregarPropiedadesRoute: TutechoahoraAgregarPropiedadesRoute,
   PropiedadIdRoute: PropiedadIdRoute,
 }
 export const routeTree = rootRouteImport
