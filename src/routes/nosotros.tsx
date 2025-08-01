@@ -31,7 +31,7 @@ function RouteComponent() {
             <div className="md:w-1/2 flex flex-col justify-center p-3">
               <h3 className="text-4xl font-bold text-gray-800 mb-6">¿Quiénes somos?</h3>
               <p className="text-gray-600 mb-8 leading-relaxed">
-                En <span className="text-primary font-black">TuTechoAhora</span>, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
+                En <span className="text-primary">TuTechoAhora</span>, somos una inmobiliaria comprometida con ayudarte a encontrar el hogar ideal para ti y tu familia. Nos especializamos en seleccionar propiedades bajo estrictos estándares de calidad, transparencia y compromiso, brindando un servicio personalizado que inspira confianza y tranquilidad.
               </p>
 
 
@@ -72,22 +72,26 @@ function RouteComponent() {
           </div>
 
 
-          <div className="flex flex-col md:flex-row gap-4 mt-20 p-2">
-            <img
-              src="/about1.jpg"
-              alt="Casa moderna"
-              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
-            />
-            <img
-              src="/beneficiosSection2.jpg"
-              alt="Casa rústica"
-              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
-            />
-            <img
-              src="/beneficiosSection.jpg"
-              alt="Casa acogedora"
-              className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
-            />
+          <div className="gap-4 mt-20 p-2">
+            <h2 className="text-5xl text-primary text-center font-black mb-6">Gran variedad de propiedades</h2>
+            <p className='text-center text-gray-600 mb-8'>En TuTechoAhora, te ofrecemos una amplia gama de propiedades para que encuentres la que mejor se adapte a tus necesidades.</p>
+            <div className='flex flex-col md:flex-row gap-4'>
+              <img
+                src="/about1.jpg"
+                alt="Casa moderna"
+                className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
+              />
+              <img
+                src="/beneficiosSection2.jpg"
+                alt="Casa rústica"
+                className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
+              />
+              <img
+                src="/beneficiosSection.jpg"
+                alt="Casa acogedora"
+                className="w-full h-48 lg:h-60 md:w-1/3 rounded-xl object-cover"
+              />
+            </div>
           </div>
         </div>
         <Beneficios />
