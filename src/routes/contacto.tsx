@@ -93,7 +93,7 @@ function RouteComponent() {
         <section className="p-4 lg:p-16 flex justify-between">
           <div className="">
             <h2 className="text-3xl font-bold mb-4 text-primary">CONTACTO</h2>
-            <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 976 655 790</p>
+            <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 923 985 594</p>
             <p className="lg:text-lg text-sm text-gray-700 mb-2">
               acosme@innovatechapp.com
             </p>

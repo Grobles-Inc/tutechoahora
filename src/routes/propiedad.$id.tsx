@@ -88,7 +88,7 @@ ${currentUrl}
 
 ¡Me interesa esta propiedad! ¿Podrían brindarme más información?`
 
-    const whatsappUrl = `https://wa.me/51970000000?text=${encodeURIComponent(message)}`
+    const whatsappUrl = `https://wa.me/51923985594?text=${encodeURIComponent(message)}`
     window.open(whatsappUrl, '_blank')
   }
 
