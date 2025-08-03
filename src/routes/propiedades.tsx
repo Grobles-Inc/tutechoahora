@@ -70,7 +70,7 @@ function RouteComponent() {
                       ? property.caracteristicas
                       : String(property.caracteristicas).split(',').map((c: string) => c.trim())
                     ).slice(0, 3).map((car: string, idx: number) => (
-                      <span key={idx} className="badge badge-outline">{car}</span>
+                      <span key={idx} className="badge badge-outline text-xs">{car}</span>
                     ))}
                 </div>
                 {/* Empty div to keep card-body padding for layout consistency */}
