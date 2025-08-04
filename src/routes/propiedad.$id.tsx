@@ -305,14 +305,13 @@ ${currentUrl}
           <div className="bg-white rounded-xl shadow-sm overflow-hidden">
             {propiedad.coordenadas ? (
               <div className="relative">
-                {/* OpenStreetMap embebido sin necesidad de API key */}
+                {/* Google Maps embebido por defecto */}
                 <iframe
                   src={(() => {
                     const coords = propiedad.coordenadas.split(',').map((coord: string) => parseFloat(coord.trim()));
                     const lat = coords[0];
                     const lon = coords[1];
-                    const bbox = `${lon - 0.01},${lat - 0.01},${lon + 0.01},${lat + 0.01}`;
-                    return `https://www.openstreetmap.org/export/embed.html?bbox=${bbox}&layer=mapnik&marker=${lat},${lon}`;
+                    return `https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=${lat},${lon}&zoom=15`;
                   })()}
                   width="100%"
                   height="400"
