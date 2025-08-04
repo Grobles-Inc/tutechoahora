@@ -9,7 +9,7 @@ export default function Footer() {
           data-aos="fade-up"
         >
           <div className="flex flex-col gap-2 mb-6">
-            <img src="/logoSecundario.png" alt="Logo" className="h-24 -ml-4" />
+            <img src="/logoSecundario.png" alt="Logo" className="h-24 -ml-4 w-fit" />
             <span className="font-semibold opacity-70">Donde tu hogar, tu futuro y tu sonrisa son lo más importante.</span>
           </div>
 

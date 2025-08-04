@@ -18,15 +18,15 @@ interface PropertyCardProps {
   onViewDetails?: (property: Property) => void
 }
 
-export function PropertyCard({ 
-  property, 
-  variant = 'default', 
+export function PropertyCard({
+  property,
+  variant = 'default',
   showDescription = false,
-  onViewDetails 
+  onViewDetails
 }: PropertyCardProps) {
   const isLarge = variant === 'large'
   const router = useRouter()
-  
+
   const handleViewDetails = () => {
     if (property.id) {
       router.navigate({ to: '/propiedad/$id', params: { id: String(property.id) } })
@@ -39,20 +39,19 @@ export function PropertyCard({
     <div className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden border border-gray-100">
       {/* Imagen */}
       <div className="relative overflow-hidden">
-        <img 
-          src={property.imagenes?.[0] || "/placeholder.jpg"} 
-          alt={property.titulo} 
-          className={`w-full object-cover transition-transform duration-300 hover:scale-105 ${
-            isLarge ? 'h-48 md:h-56' : 'h-40 md:h-44'
-          }`}
+        <img
+          src={property.imagenes?.[0] || "/placeholder.jpg"}
+          alt={property.titulo}
+          className={`w-full object-cover transition-transform duration-300 hover:scale-105 ${isLarge ? 'h-48 md:h-56' : 'h-40 md:h-44'
+            }`}
         />
-        {property.estado && (
+        {property.id && (
           <div className="absolute top-3 left-3">
             <span className="bg-emerald-500 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
               <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              {property.estado}
+              ID : {property.id}
             </span>
           </div>
         )}
@@ -72,9 +71,8 @@ export function PropertyCard({
         )}
 
         {/* Título */}
-        <h3 className={`font-bold text-gray-900 line-clamp-2 ${
-          isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'
-        }`}>
+        <h3 className={`font-bold text-gray-900 line-clamp-2 ${isLarge ? 'text-base md:text-lg' : 'text-sm md:text-base'
+          }`}>
           {property.titulo}
         </h3>
 
@@ -104,7 +102,7 @@ export function PropertyCard({
         </div>
 
         {/* Botón de acción */}
-        <button 
+        <button
           onClick={handleViewDetails}
           className="btn btn-primary w-full mt-4 flex items-center justify-center gap-2 hover:bg-primary-focus transition-colors"
         >
