@@ -55,7 +55,6 @@ function RouteComponent() {
                   </div>
                 </div>
                 <p className="text-sm text-base-content/70 mb-2">{property.ubicacion}</p>
-                <p className="text-sm line-clamp-2 mb-3">{property.descripcion}</p>
                 <div className="flex justify-between items-center mb-4">
                   <div className="text-lg font-bold text-primary">
                     {property.precio ? `$${property.precio.toLocaleString()} USD` : ''}
@@ -64,15 +63,15 @@ function RouteComponent() {
                     {property.areaTerreno ? `${property.areaTerreno} m²` : ''}
                   </div>
                 </div>
-                <div className="flex flex-wrap gap-2 mb-2">
+                <ul className="list-disc list-inside mb-2">
                   {property.caracteristicas &&
                     (Array.isArray(property.caracteristicas)
                       ? property.caracteristicas
                       : String(property.caracteristicas).split(',').map((c: string) => c.trim())
                     ).slice(0, 3).map((car: string, idx: number) => (
-                      <span key={idx} className="badge badge-outline text-xs">{car}</span>
+                      <li key={idx} className="text-xs">{car}</li>
                     ))}
-                </div>
+                </ul>
                 {/* Empty div to keep card-body padding for layout consistency */}
                 <div style={{ height: 0 }} />
                 <button
