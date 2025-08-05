@@ -143,11 +143,7 @@ function App() {
                         <option value="venta">Venta</option>
                         <option value="alquiler">Alquiler</option>
                       </select>
-                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
+
                     </div>
 
                     {/* Select de tipo de vivienda */}
@@ -163,11 +159,7 @@ function App() {
                         <option value="local">Local</option>
                         <option value="terreno">Terreno</option>
                       </select>
-                      <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                        <svg className="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                        </svg>
-                      </div>
+
                     </div>
                   </div>
                   {/* Botones de búsqueda y reset */}
