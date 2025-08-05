@@ -101,7 +101,7 @@ export function TextArea({
         rows={rows}
         onChange={(e) => field.handleChange(e.target.value)}
         placeholder={placeholder}
-        className="textarea textarea-bordered lg:h-64 h-48 w-full"
+        className="textarea textarea-bordered h-36 w-full"
       />
       {field.state.meta.isTouched && <ErrorMessages errors={errors} />}
     </div>

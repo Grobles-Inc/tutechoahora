@@ -22,17 +22,17 @@ export const Route = createFileRoute('/agregar')({
 })
 
 const schema = z.object({
-  titulo: z.string().min(1, 'Title is required'),
-  descripcion: z.string().min(1, 'Description is required'),
-  precio: z.number().min(0, 'Price must be a positive number'),
-  ubicacion: z.string().min(1, 'Location is required'),
+  titulo: z.string().min(1, 'Título es requerido'),
+  descripcion: z.string().min(1, 'Descripción es requerida'),
+  precio: z.number().min(0, 'Precio debe ser un número positivo'),
+  ubicacion: z.string().min(1, 'Ubicación es requerida'),
   tipoOperacion: z.string().min(1, 'Tipo de Operación es requerido'),
   areaTerreno: z.number().min(0, 'Area de Terreno debe ser un número positivo'),
   tipoVivienda: z.string().min(1, 'Tipo de Vivienda es requerido'),
-  caracteristicas: z.string().optional(),
+  caracteristicas: z.string().min(1, 'Características son requeridas'),
   imagenes: z.string().array().optional(),
   videoUrl: z.string().optional(),
-  coordenadas: z.string().optional(),
+  coordenadas: z.string().min(1, 'Coordenadas son requeridas'),
 })
 
 function AddEditProperty() {
@@ -57,7 +57,7 @@ function AddEditProperty() {
       areaTerreno: 0,
       tipoVivienda: '',
       caracteristicas: '',
-      imagenes: [],
+      imagenes: [] as string[],
       videoUrl: '',
     },
     validators: {
@@ -302,7 +302,7 @@ function AddEditProperty() {
               <div className="form-control w-full">
                 <field.TextField
                   label="Coordenadas"
-                  placeholder="-12.123456, -77.123456"
+                  placeholder="Pegar las coordenadas desde Google Maps"
                 />
               </div>
             )}

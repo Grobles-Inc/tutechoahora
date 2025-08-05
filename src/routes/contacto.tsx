@@ -2,6 +2,7 @@ import { createFileRoute } from '@tanstack/react-router'
 import { z } from 'zod'
 import { useAppForm } from '../hooks/demo.form'
 import SEO from '@/components/SEO'
+import { revalidateLogic } from '@tanstack/react-form'
 
 export const Route = createFileRoute('/contacto')({
   component: RouteComponent,
@@ -22,9 +23,9 @@ function RouteComponent() {
       phone: '',
       details: '',
     },
+    validationLogic: revalidateLogic(),
     validators: {
-      onBlur: schema,
-
+      onDynamic: schema,
     },
     onSubmit: ({ value }) => {
       const { name, email, phone, details } = value
@@ -32,6 +33,7 @@ function RouteComponent() {
 
       const whatsappUrl = `https://wa.me/51928323814?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, "_blank")
+      form.reset()
     },
   })
 
@@ -76,7 +78,7 @@ function RouteComponent() {
 
               <div className="w-full">
                 <form.AppForm>
-                  <form.SubscribeButton label="CONTÁCTENOS" />
+                  <form.SubscribeButton label="ENVIAR CONSULTA" />
                 </form.AppForm>
               </div>
             </form>
