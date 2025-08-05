@@ -72,7 +72,7 @@ function App() {
             {/* Buscador mejorado */}
             <div className="relative">
               <div className="absolute inset-0 bg-white/20 backdrop-blur-md rounded-2xl"></div>
-              <div className="relative bg-white/90 backdrop-blur-sm border border-white/30 rounded-2xl p-6 shadow-xl">
+              <div className="relative ">
                 <div className="flex flex-col gap-4">
                   <div className="grid sm:grid-cols-1 gap-4">
                     {/* Input de ID */}
@@ -85,11 +85,11 @@ function App() {
                       </div>
                       <input
                         type="text"
-                        placeholder="Buscar por ID de propiedad"
+                        placeholder="Búsqueda por ID"
                         value={searchId}
                         onChange={(e) => setSearchId(e.target.value)}
-                        onKeyPress={handleKeyPress}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
+                        onKeyDown={handleKeyPress}
+                        className="w-full pl-4 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-200 bg-white/80 backdrop-blur-sm"
                       />
                     </div>
                   </div>
@@ -136,7 +136,7 @@ function App() {
           }
           properties={filteredProperties}
           maxItems={1}
-          gridCols="1"
+          gridCols="auto"
         />
         {/* Propiedad destacada */}
         {Array.isArray(propiedades) && propiedades.length > 0 && (
@@ -148,10 +148,10 @@ function App() {
           <PropertySection
             title="Propiedades recientes:"
             properties={propiedades}
-            maxItems={2}
+            maxItems={3}
             variant="large"
             showDescription={false}
-            gridCols="2"
+            gridCols="3"
           />
         )}
       </main>

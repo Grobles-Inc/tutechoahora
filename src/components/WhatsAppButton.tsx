@@ -2,7 +2,7 @@
 export default function WhatsAppButton() {
 
   const handleWhatsAppClick = () => {
-    const phoneNumber = '51923985594'
+    const phoneNumber = '51928323814'
     const message = '¡Hola! Me interesa conocer más sobre sus propiedades, que tienen en venta.'
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 

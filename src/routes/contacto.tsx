@@ -24,12 +24,13 @@ function RouteComponent() {
     },
     validators: {
       onBlur: schema,
+
     },
     onSubmit: ({ value }) => {
       const { name, email, phone, details } = value
       const message = `*Nueva consulta de Techo App:*\n\n*Nombre:* ${name}\n*Correo:* ${email}\n*Celular:* ${phone}\n*Detalles:* ${details}`
 
-      const whatsappUrl = `https://wa.me/51976655790?text=${encodeURIComponent(message)}`
+      const whatsappUrl = `https://wa.me/51928323814?text=${encodeURIComponent(message)}`
       window.open(whatsappUrl, "_blank")
     },
   })
@@ -70,7 +71,7 @@ function RouteComponent() {
               </form.AppField>
 
               <form.AppField name="details">
-                {(field) => <field.TextArea label="Detalles" rows={4} />}
+                {(field) => <field.TextArea label="Mensaje" rows={4} placeholder="Escribe tu consulta aquí" />}
               </form.AppField>
 
               <div className="w-full">
@@ -93,9 +94,9 @@ function RouteComponent() {
         <section className="p-4 lg:p-16 flex justify-between">
           <div className="">
             <h2 className="text-3xl font-bold mb-4 text-primary">CONTACTO</h2>
-            <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 923 985 594</p>
+            <p className="lg:text-lg text-sm text-gray-700 mb-2">(+51) 928 323 814</p>
             <p className="lg:text-lg text-sm text-gray-700 mb-2">
-              acosme@innovatechapp.com
+              info@tutechoahora.com
             </p>
           </div>
         </section>

@@ -55,6 +55,7 @@ export default function Footer() {
               <a
                 href="https://www.facebook.com"
                 target="_blank"
+
                 className="text-white hover:text-secondary"
               >
                 <img
