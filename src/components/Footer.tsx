@@ -39,12 +39,12 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/51923985594?text=hola"
+                  href="https://wa.me/51928323814?text=hola"
                   className="text-white"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  (+51) 923 985 594
+                  (+51) 928 323 814
                 </a>
               </li>
             </ul>
