@@ -1,6 +1,7 @@
 
 export default function Footer() {
   const today = new Date();
+  const message = "Hola, estoy interesado en las propiedades. Que tienen en venta."
   return (
     <footer className="bg-primary text-white py-20">
       <div className="container mx-auto max-w-7xl px-4">
@@ -39,7 +40,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://wa.me/51928323814?text=hola"
+                  href={`https://wa.me/51928323814?text=${message}`}
                   className="text-white"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -53,7 +54,7 @@ export default function Footer() {
           <div className="flex flex-col col-span-2 justify-end h-full" data-aos="fade-up">
             <div className="flex gap-4 mb-4">
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/p/TU-TECHO-AHORA-100065372923792/?locale=es_LA"
                 target="_blank"
 
                 className="text-white hover:text-secondary"
@@ -66,24 +67,13 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.instagram.com"
+                href={`https://wa.me/51928323814?text=${message}`}
                 target="_blank"
                 className="text-white hover:text-secondary"
               >
                 <img
                   src="https://img.icons8.com/?size=48&id=16713&format=png"
                   alt="Instagram"
-                  className="w-10 h-10"
-                />
-              </a>
-              <a
-                href="https://www.tiktok.com"
-                target="_blank"
-                className="text-white hover:text-secondary"
-              >
-                <img
-                  src="https://img.icons8.com/?size=48&id=118640&format=png"
-                  alt="Tiktok"
                   className="w-10 h-10"
                 />
               </a>
