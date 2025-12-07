@@ -85,9 +85,8 @@ export default function Footer() {
         </div>
         <div className="text-center mt-10 text-white">
           Desarrollado por <a
-            href="https://groblesolutions.netlify.app/"
-            className="text-black underline">Grobles Solutions.</a
-          >
+            href="https://groblestudio.com/"
+            className="text-black underline">Grobles Studio.</a>
         </div>
       </div>
     </footer>
